@@ -14,13 +14,24 @@ const customLightTheme = {
     }
 }
 
+const customDarkTheme = {
+    dark: true,
+    colors: {
+        background: "#000000", // black
+        primary: "#212121", // dark grey
+        secondary: "#023047", // dark blue
+        accent: "#FFB703" // golden yellow
+    }
+}
+
 const vuetify = createVuetify({
     components,
     directives,
     theme: {
-        defaultTheme: "customLightTheme",
+        defaultTheme: "customDarkTheme",
         themes: {
             customLightTheme,
+            customDarkTheme
         }
     },
 })
