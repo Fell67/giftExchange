@@ -21,7 +21,7 @@ import { marked } from "marked"
 import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
-const readMe = "@/../README.md"
+const readMe = "src/assets/README.md"
 
 export default {
     name: "Welcome",
