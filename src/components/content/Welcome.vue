@@ -9,6 +9,7 @@
             <v-btn 
                 variant="elevated"
                 color="accent"
+                disabled
             >
                 Continue
             </v-btn>
