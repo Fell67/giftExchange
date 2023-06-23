@@ -22,6 +22,14 @@
       <v-card-text
         style="padding: 1rem;"
       >
+        <v-switch
+          v-model="theme"
+          color="accent"
+          true-value="Light"
+          false-value="Dark"
+          :label="`Theme: ${theme}`"
+        >
+        </v-switch>
         <contentBox />
       </v-card-text>
     </v-card>
@@ -35,6 +43,23 @@
       name: "ContentBox",
       components: {
         contentBox: contentBox
+      },
+      data () {
+        return {
+          theme: ''
+        }
+      },
+      watch: {
+        theme: function changeTheme() {
+          if (this.theme === 'Light') {
+            this.$vuetify.theme.name = 'Light'  
+          } else if (this.theme === 'Dark') {
+            this.$vuetify.theme.name = 'Dark'  
+          }
+        }
+      },
+      created () {
+        this.theme = this.$vuetify.theme.name
       }
   }
 </script>

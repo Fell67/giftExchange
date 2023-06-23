@@ -4,7 +4,7 @@ import * as components from "vuetify/components"
 import * as directives from "vuetify/directives"
 
 // My themes
-const customLightTheme = {
+const Light = {
     dark: false,
     colors: {
         background: "#FFFFFF", // white
@@ -14,7 +14,7 @@ const customLightTheme = {
     }
 }
 
-const customDarkTheme = {
+const Dark = {
     dark: true,
     colors: {
         background: "#000000", // black
@@ -28,10 +28,10 @@ const vuetify = createVuetify({
     components,
     directives,
     theme: {
-        defaultTheme: "customDarkTheme",
+        defaultTheme: "Light",
         themes: {
-            customLightTheme,
-            customDarkTheme
+            Light,
+            Dark
         }
     },
 })
