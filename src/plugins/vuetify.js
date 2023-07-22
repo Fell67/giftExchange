@@ -10,7 +10,8 @@ const Light = {
         background: "#FFFFFF", // white
         primary: "#5BC8E7", // sky blue
         secondary: "#023047", // dark blue
-        accent: "#FFB703" // golden yellow
+        accent: "#FFB703", // golden yellow
+        'accent-2': "#023047" // dark blue
     }
 }
 
@@ -20,7 +21,8 @@ const Dark = {
         background: "#000000", // black
         primary: "#212121", // dark grey
         secondary: "#023047", // dark blue
-        accent: "#FFB703" // golden yellow
+        accent: "#FFB703", // golden yellow
+        'accent-2': "#FFB703" // golden yellow
     }
 }
 
