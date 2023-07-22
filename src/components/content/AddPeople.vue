@@ -4,7 +4,7 @@
             Add People
         </h1>
         <!-- text field and button to add a new person -->
-        <v-row align-content="center">
+        <v-row align-content="center" dense>
             <v-col>
                 <v-text-field 
                     label="Name"
@@ -41,6 +41,7 @@
                 <v-row
                     v-for="person of peopleAttending"
                     :key="person"
+                    dense
                 >
                     <!-- If the user didnt select edit -->
                     <v-col v-if="!person.edit">
@@ -57,24 +58,34 @@
                                     <v-col
                                         cols="auto"
                                     >
-                                        <v-btn
-                                            variant="elevated"
-                                            color="accent"
+                                        <span
+                                            class="material-symbols-outlined"
                                             @click="person.edit=true"
                                         >
-                                            Edit
-                                        </v-btn>
+                                            edit
+                                            <v-tooltip
+                                                activator="parent"
+                                                location="top"
+                                            >
+                                                Edit
+                                            </v-tooltip>
+                                        </span>
                                     </v-col>
                                     <v-col
                                         cols="auto"
                                     >
-                                        <v-btn
-                                            variant="outlined"
-                                            color="accent-2"
-                                            @click="remove(person)"
+                                        <span
+                                            class="material-symbols-outlined"
+                                            @click="remove(person)"                                      
                                         >
-                                            Remove
-                                        </v-btn>
+                                            delete
+                                            <v-tooltip
+                                                activator="parent"
+                                                location="top"
+                                            >
+                                                Delete
+                                            </v-tooltip>
+                                        </span>
                                     </v-col>
                                 </v-row>
                             </v-col>
@@ -93,24 +104,34 @@
                                     <v-col
                                         cols="auto"
                                     >
-                                        <v-btn
-                                            variant="elevated"
-                                            color="accent"
-                                            @click="save(person)"
+                                    <span
+                                        class="material-symbols-outlined"
+                                        @click="save(person)"    
+                                    >
+                                        done
+                                        <v-tooltip
+                                            activator="parent"
+                                            location="top"
                                         >
                                             Save
-                                        </v-btn>
+                                        </v-tooltip>
+                                    </span>
                                     </v-col>
                                     <v-col
                                         cols="auto"
                                     >
-                                        <v-btn
-                                            variant="outlined"
-                                            color="accent-2"
+                                        <span
+                                            class="material-symbols-outlined"
                                             @click="cancel(person)"
                                         >
-                                            Cancel
-                                        </v-btn>
+                                            close
+                                            <v-tooltip
+                                                activator="parent"
+                                                location="top"
+                                            >
+                                                Cancel
+                                            </v-tooltip>
+                                        </span>
                                     </v-col>
                                 </v-row>
                             </v-col>
