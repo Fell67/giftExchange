@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-center">
+        <h1>
             Welcome!
         </h1>
         <div v-html="readMeHTML" />
@@ -9,7 +9,7 @@
             <v-btn 
                 variant="elevated"
                 color="accent"
-                disabled
+                @click="goToDifferentPage()"
             >
                 Continue
             </v-btn>
@@ -26,6 +26,7 @@ const readMe = "@/../README.md"
 
 export default {
     name: "Welcome",
+    emits: ["goToDifferentPage"],
     data () {
         return {
             readMeHTML: ""
@@ -53,6 +54,10 @@ export default {
             })
 
             this.readMeHTML = marked(text)
+        },
+        // Go to the next page of the website
+        goToDifferentPage () {
+            this.$emit("goToDifferentPage", "continue")
         }
     }
 }
