@@ -1,8 +1,3 @@
-<script setup>
-  import Welcome from "@/components/content/Welcome.vue"
-  import AddPeople from "@/components/content/AddPeople.vue"
-</script>
-
 <template>
     <div>
         <Welcome 
