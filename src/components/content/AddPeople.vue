@@ -10,6 +10,8 @@
                     label="Name"
                     v-model="newPerson"
                     style="padding-right: 1%"
+                    :error="(dupPersonMsg !== '')"
+                    :error-messages="dupPersonMsg"
                 />
             </v-col>
             <v-col>
@@ -165,7 +167,7 @@ export default {
         return {
             peopleAttending: [], // List of people attending
             noOneAttendingMsg: 'Currently have no one attending the gift exchange. To add people enter their name in the text field above and click "Add Person"',
-            newPerson: '' // The new person being added
+            newPerson: "" // The new person being added
         }
     },
     computed: {
@@ -173,9 +175,21 @@ export default {
         disableContinue: function disableContinue () {
             return (this.peopleAttending.length < 2)
         },
-        // Disable the add person button if a name has not been entered into the text field
+        // Disable the add person button if a name has not been entered into the text field or if its a duplicate name
         disableAddPerson: function disableAddPerson () {
-            return (this.newPerson === "")
+            return ((this.dupPersonMsg !== '') || (this.newPerson === ""))
+        },
+        // If the person that the user is typing exists display an error message
+        dupPersonMsg: function displayError () {
+            let isListed = this.peopleAttending.find((personAttending) => { 
+                return (personAttending.name.toUpperCase() === this.newPerson.toUpperCase())
+            })
+            if (isListed === undefined) {
+                return ""
+            }
+            else {
+                return this.newPerson + " is already on the list of people attending."
+            }
         }
     },
     methods: {
