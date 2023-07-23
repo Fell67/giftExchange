@@ -19,7 +19,7 @@
                     variant="elevated"
                     color="accent"
                     :disabled="disableAddPerson"
-                    @click="addPerson()"
+                    @click="addPersonAndClearNewPerson()"
                 >
                     Add Person
                 </v-btn>
@@ -78,7 +78,7 @@
                                     >
                                         <span
                                             class="material-symbols-outlined"
-                                            @click="remove(person)"                                      
+                                            @click="removePerson(person)"                                      
                                         >
                                             delete
                                             <v-tooltip
@@ -162,10 +162,20 @@
     </div>
 </template>
 <script>
+import { storeToRefs } from "pinia";
+// The usePeopleAttendingStore is used to hold the names of the people are attending
+import { usePeopleAttendingStore } from "@/stores/PeopleAttending"
+
 export default {
+    setup () {
+        const peopleAttendingStore = usePeopleAttendingStore()
+        const { peopleAttending } = storeToRefs(peopleAttendingStore)
+        const { addPerson, removePerson } = peopleAttendingStore
+
+        return { peopleAttending, addPerson, removePerson}
+    },
     data () {
         return {
-            peopleAttending: [], // List of people attending
             noOneAttendingMsg: 'Currently have no one attending the gift exchange. To add people enter their name in the text field above and click "Add Person"',
             newPerson: "" // The new person being added
         }
@@ -193,24 +203,9 @@ export default {
         }
     },
     methods: {
-        // Add a person to the list of people attending
-        addPerson () {
-            let person = {
-                name: this.newPerson,
-                edit: false,
-                editName: this.newPerson
-            }
-            this.peopleAttending.push({...person})
+        addPersonAndClearNewPerson () {
+            this.addPerson(this.newPerson)
             this.newPerson = ""
-        },
-        remove (removePerson) {
-            let tempArray = []
-            for (let person of this.peopleAttending) {
-                if (person !== removePerson) {
-                    tempArray.push(person)
-                }
-            }
-            this.peopleAttending = tempArray
         },
         // cancel updating a person's name
         cancel (person) {
