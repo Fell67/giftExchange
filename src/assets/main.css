@@ -3,10 +3,15 @@ h1 {
     text-align: center;
 }
 .material-symbols-outlined {
-  cursor: pointer;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
   'opsz' 48
+}
+.material-symbols-outlined-enabled {
+  cursor: pointer;
+}
+.material-symbols-outlined-disabled {
+  color: #666666;
 }
