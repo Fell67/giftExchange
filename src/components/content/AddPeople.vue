@@ -62,6 +62,7 @@
                                     >
                                         <span
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
                                             @click="editPerson(person)"
                                         >
                                             edit
@@ -78,6 +79,7 @@
                                     >
                                         <span
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
                                             @click="removePerson(person)"                                      
                                         >
                                             delete
@@ -111,6 +113,7 @@
                                     <span
                                         class="material-symbols-outlined"
                                         :class="(isDupPerson.has(person.editName)) ? 'material-symbols-outlined-disabled' : 'material-symbols-outlined-enabled'"
+                                        tabindex="0"
                                         @click="save(person)"    
                                     >
                                         done
@@ -127,6 +130,7 @@
                                     >
                                         <span
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
                                             @click="cancel(person)"
                                         >
                                             close
