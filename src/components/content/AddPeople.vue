@@ -10,8 +10,8 @@
                     label="Name"
                     v-model="newPerson"
                     style="padding-right: 1%"
-                    :error="(dupPersonMsg !== '')"
-                    :error-messages="dupPersonMsg"
+                    :error="(isDupPerson.has(newPerson))"
+                    :error-messages="isDupPerson.get(newPerson)"
                 />
             </v-col>
             <v-col>
@@ -61,8 +61,9 @@
                                         cols="auto"
                                     >
                                         <span
-                                            class="material-symbols-outlined"
-                                            @click="person.edit=true"
+                                            class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
+                                            @click="editPerson(person)"
                                         >
                                             edit
                                             <v-tooltip
@@ -77,7 +78,8 @@
                                         cols="auto"
                                     >
                                         <span
-                                            class="material-symbols-outlined"
+                                            class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
                                             @click="removePerson(person)"                                      
                                         >
                                             delete
@@ -99,6 +101,8 @@
                             <v-col>
                                 <v-text-field
                                     v-model="person.editName"
+                                    :error="(isDupPerson.has(person.editName))"
+                                    :error-messages="isDupPerson.get(person.editName)"
                                 />
                             </v-col>
                             <v-col>
@@ -108,6 +112,8 @@
                                     >
                                     <span
                                         class="material-symbols-outlined"
+                                        :class="(isDupPerson.has(person.editName)) ? 'material-symbols-outlined-disabled' : 'material-symbols-outlined-enabled'"
+                                        tabindex="0"
                                         @click="save(person)"    
                                     >
                                         done
@@ -123,7 +129,8 @@
                                         cols="auto"
                                     >
                                         <span
-                                            class="material-symbols-outlined"
+                                            class="material-symbols-outlined material-symbols-outlined-enabled"
+                                            tabindex="0"
                                             @click="cancel(person)"
                                         >
                                             close
@@ -169,10 +176,10 @@ import { usePeopleAttendingStore } from "@/stores/PeopleAttending"
 export default {
     setup () {
         const peopleAttendingStore = usePeopleAttendingStore()
-        const { peopleAttending } = storeToRefs(peopleAttendingStore)
-        const { addPerson, removePerson } = peopleAttendingStore
+        const { peopleAttending, getEditNameOfPeopleBeingEdited } = storeToRefs(peopleAttendingStore)
+        const { addPerson, removePerson, editPerson } = peopleAttendingStore
 
-        return { peopleAttending, addPerson, removePerson}
+        return { peopleAttending, getEditNameOfPeopleBeingEdited, addPerson, removePerson, editPerson}
     },
     data () {
         return {
@@ -187,19 +194,25 @@ export default {
         },
         // Disable the add person button if a name has not been entered into the text field or if its a duplicate name
         disableAddPerson: function disableAddPerson () {
-            return ((this.dupPersonMsg !== '') || (this.newPerson === ""))
+            return ((this.isDupPerson.has(this.newPerson)) || (this.newPerson === ""))
         },
         // If the person that the user is typing exists display an error message
-        dupPersonMsg: function displayError () {
-            let isListed = this.peopleAttending.find((personAttending) => { 
-                return (personAttending.name.toUpperCase() === this.newPerson.toUpperCase())
-            })
-            if (isListed === undefined) {
-                return ""
+        isDupPerson: function displayError () {
+            let isDupPerson = new Map()
+            let namesToCheck = this.getEditNameOfPeopleBeingEdited
+            namesToCheck.push(this.newPerson)
+
+            for (let name of namesToCheck) {
+                // check that the new person being entered has a unique name and the names of everyone who has a name being edited        
+                let isListed = this.peopleAttending.find((personAttending) => { 
+                    return (personAttending.name.toUpperCase().replace(/ /g, "") === name.toUpperCase().replace(/ /g, ""))
+                })
+                if (isListed !== undefined) {
+                    isDupPerson.set(name, name + " is already on the list of people attending.")
+                }
             }
-            else {
-                return this.newPerson + " is already on the list of people attending."
-            }
+
+            return isDupPerson
         }
     },
     methods: {
@@ -214,8 +227,10 @@ export default {
         },
         // Save the name that was edited
         save (person) {
-            person.name = person.editName
-            person.edit = false
+           if (!(this.isDupPerson.has(person.editName))) {
+                person.name = person.editName
+                person.edit = false
+            }
         },
         // Go to the next page of the website
         goToDifferentPage (direction) {

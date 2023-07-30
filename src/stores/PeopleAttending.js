@@ -5,7 +5,16 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
         peopleAttending: []
     }),
     getters: {
+        getEditNameOfPeopleBeingEdited () {
+            let editNames = []
+            for (let person of this.peopleAttending) {
+                if (person.edit) {
+                    editNames.push(person.editName)
+                }
+            }
 
+            return editNames
+        }
     },
     actions: {
         // Add a person to the list of people attending
@@ -26,6 +35,11 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
                 }
             }
             this.peopleAttending = tempArray
+        },
+        editPerson (person) {
+            let editPersonLocation = this.peopleAttending.indexOf(person)
+
+            this.peopleAttending[editPersonLocation].edit = true
         }
     }
 })
