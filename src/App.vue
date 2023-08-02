@@ -34,6 +34,7 @@
           true-value="Light"
           false-value="Dark"
           :label="`Theme: ${theme}`"
+          tabindex="0"
         >
         </v-switch>
         <contentBox />
@@ -52,15 +53,15 @@
       },
       data () {
         return {
-          theme: ''
+          theme: ""
         }
       },
       watch: {
         theme: function changeTheme() {
-          if (this.theme === 'Light') {
-            this.$vuetify.theme.name = 'Light'  
-          } else if (this.theme === 'Dark') {
-            this.$vuetify.theme.name = 'Dark'  
+          if (this.theme === "Light") {
+            this.$vuetify.theme.name = "Light"  
+          } else if (this.theme === "Dark") {
+            this.$vuetify.theme.name = "Dark"  
           }
         }
       },
