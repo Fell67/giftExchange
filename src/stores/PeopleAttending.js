@@ -20,9 +20,10 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
         // Add a person to the list of people attending
         addPerson (newPerson) {
             let person = {
-                name: newPerson,
-                edit: false,
-                editName: newPerson
+                name: newPerson, // This is the current name of the person 
+                edit: false, // This keeps track on if the user is editing the name
+                editName: newPerson, // This is the name the user is editing the person's name to
+                nameDrawn: '' // This is the name of who they have drawn
             }
             this.peopleAttending.push({...person})
         },
@@ -36,10 +37,19 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
             }
             this.peopleAttending = tempArray
         },
+        // If the user wants to edit a person's name then mark that name as being edited
         editPerson (person) {
             let editPersonLocation = this.peopleAttending.indexOf(person)
 
             this.peopleAttending[editPersonLocation].edit = true
+        },
+        // Update a person with the new information
+        updatePersonAttending (personToUpdate, newInformation) {
+            // Find where the person is located in the array
+            let updatePersonLocation = this.peopleAttending.indexOf(personToUpdate.name)
+
+            // update the information
+            this.peopleAttending[updatePersonLocation] = newInformation
         }
     }
 })

@@ -25,8 +25,6 @@ import { gfmHeadingId } from "marked-gfm-heading-id"
 const readMe = "@/../README.md"
 
 export default {
-    name: "Welcome",
-    emits: ["goToDifferentPage"],
     data () {
         return {
             readMeHTML: ""
