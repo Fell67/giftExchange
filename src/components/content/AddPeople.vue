@@ -64,6 +64,7 @@
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
                                             tabindex="0"
                                             @click="editPerson(person)"
+                                            @keyup.enter="editPerson(person)"
                                         >
                                             edit
                                             <v-tooltip
@@ -80,7 +81,8 @@
                                         <span
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
                                             tabindex="0"
-                                            @click="removePerson(person)"                                      
+                                            @click="removePerson(person)"
+                                            @keyup.enter="removePerson(person)"                                      
                                         >
                                             delete
                                             <v-tooltip
@@ -114,7 +116,8 @@
                                         class="material-symbols-outlined"
                                         :class="(isDupPerson.has(person.editName)) ? 'material-symbols-outlined-disabled' : 'material-symbols-outlined-enabled'"
                                         tabindex="0"
-                                        @click="save(person)"    
+                                        @click="save(person)"
+                                        @keyup.enter="save(person)"
                                     >
                                         done
                                         <v-tooltip
@@ -132,6 +135,7 @@
                                             class="material-symbols-outlined material-symbols-outlined-enabled"
                                             tabindex="0"
                                             @click="cancel(person)"
+                                            @keyup.enter="cancel(person)"
                                         >
                                             close
                                             <v-tooltip
