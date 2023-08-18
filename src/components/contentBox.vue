@@ -8,18 +8,24 @@
             v-if="currentComponent=='AddPeople'"
             @goToDifferentPage="goToDifferentPage($event)"
         />
+        <DrawingNames 
+            v-if="currentComponent=='DrawingNames'"
+            @goToDifferentPage="goToDifferentPage($event)"
+        />
     </div>
 </template>
 
 <script>
     import Welcome from "@/components/content/Welcome.vue"
     import AddPeople from "@/components/content/AddPeople.vue"
+    import DrawingNames from  "@/components/content/DrawingNames.vue"
 
     export default {
         name: "ContentBox",
         components: {
             Welcome: Welcome,
-            AddPeople: AddPeople
+            AddPeople: AddPeople,
+            DrawingNames: DrawingNames
         },
         data () {
             return {
@@ -31,6 +37,10 @@
                     },
                     AddPeople: {
                         goBack: "Welcome",
+                        continue: "DrawingNames"
+                    },
+                    DrawingNames: {
+                        goBack: "AddPeople",
                         continue: ""
                     }
                 } 
