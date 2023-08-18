@@ -49,6 +49,10 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
         // Add the name of the person that was drawn
         updateNameDrawn (person, nameDrawn) {
             person.nameDrawn = nameDrawn
+        },
+        // Used to empty the store
+        clearPeopleAttending () {
+            this.peopleAttending = []
         }
     }
 })
