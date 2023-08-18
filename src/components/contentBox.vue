@@ -12,6 +12,10 @@
             v-if="currentComponent=='DrawingNames'"
             @goToDifferentPage="goToDifferentPage($event)"
         />
+        <PeopleExchangingGifts 
+            v-if="currentComponent=='PeopleExchangingGifts'"
+            @goToDifferentPage="goToDifferentPage($event)"
+        />
     </div>
 </template>
 
@@ -19,14 +23,16 @@
     import Welcome from "@/components/content/Welcome.vue"
     import AddPeople from "@/components/content/AddPeople.vue"
     import DrawingNames from  "@/components/content/DrawingNames.vue"
+import PeopleExchangingGifts from "./content/PeopleExchangingGifts.vue"
 
     export default {
         name: "ContentBox",
         components: {
-            Welcome: Welcome,
-            AddPeople: AddPeople,
-            DrawingNames: DrawingNames
-        },
+    Welcome: Welcome,
+    AddPeople: AddPeople,
+    DrawingNames: DrawingNames,
+    PeopleExchangingGifts
+},
         data () {
             return {
                 currentComponent: "", // This keeps track of what currentComponent to show
@@ -41,7 +47,11 @@
                     },
                     DrawingNames: {
                         goBack: "AddPeople",
-                        continue: ""
+                        continue: "PeopleExchangingGifts"
+                    },
+                    PeopleExchangingGifts: {
+                        goBack: "AddPeople",
+                        continue: "Welcome"
                     }
                 } 
             }
