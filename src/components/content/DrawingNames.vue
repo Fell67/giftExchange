@@ -40,9 +40,9 @@ export default {
     setup () {
         const peopleAttendingStore = usePeopleAttendingStore()
         const { peopleAttending } = storeToRefs(peopleAttendingStore)
-        const { updatePersonAttending } = peopleAttendingStore
+        const { updateNameDrawn } = peopleAttendingStore
 
-        return { peopleAttending, updatePersonAttending }
+        return { peopleAttending, updateNameDrawn }
     },
     data () {
         return {
@@ -69,9 +69,7 @@ export default {
                     // If the person's name was drawn then draw another person's name else add that person's name
                     if (person.name !== this.namesToDraw[indexOfNameDrawn].name) {
                         // Save the name that was drawn for this person
-                        let newInformation = { ...person }
-                        newInformation.nameDrawn = this.namesToDraw[indexOfNameDrawn].name
-                        this.updatePersonAttending(person, newInformation)
+                        this.updateNameDrawn(person, this.namesToDraw[indexOfNameDrawn].name)
                         
                         // Mark an acceptable name as being drawn
                         isNameDrawn = true
