@@ -103,8 +103,8 @@
                             <v-col>
                                 <v-text-field
                                     v-model="person.editName"
-                                    :error="(isDupPerson.has(person.editName))"
-                                    :error-messages="isDupPerson.get(person.editName)"
+                                    :error="(person.editName === '' || isDupPerson.has(person.editName))"
+                                    :error-messages="((person.editName === '') ? emptyNameError : isDupPerson.get(person.editName))"
                                 />
                             </v-col>
                             <v-col>
@@ -114,7 +114,7 @@
                                     >
                                     <span
                                         class="material-symbols-outlined"
-                                        :class="(isDupPerson.has(person.editName)) ? 'material-symbols-outlined-disabled' : 'material-symbols-outlined-enabled'"
+                                        :class="(!(this.isDupPerson.has(person.editName)) && (person.editName !== '')) ? 'material-symbols-outlined-enabled' : 'material-symbols-outlined-disabled'"
                                         tabindex="0"
                                         @click="save(person)"
                                         @keyup.enter="save(person)"
@@ -188,6 +188,7 @@ export default {
     data () {
         return {
             noOneAttendingMsg: 'Currently have no one attending the gift exchange. To add people enter their name in the text field above and click "Add Person"',
+            emptyNameError: "You must enter a name",
             newPerson: "" // The new person being added
         }
     },
@@ -230,7 +231,7 @@ export default {
         },
         // Save the name that was edited
         save (person) {
-           if (!(this.isDupPerson.has(person.editName))) {
+           if (!(this.isDupPerson.has(person.editName)) && (person.editName !== '')) {
                 this.updateName(person, person.editName)
             }
         },
