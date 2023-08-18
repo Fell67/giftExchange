@@ -177,9 +177,9 @@ export default {
     setup () {
         const peopleAttendingStore = usePeopleAttendingStore()
         const { peopleAttending, getEditNameOfPeopleBeingEdited } = storeToRefs(peopleAttendingStore)
-        const { addPerson, removePerson, editPerson } = peopleAttendingStore
+        const { addPerson, removePerson, editPerson, updateName } = peopleAttendingStore
 
-        return { peopleAttending, getEditNameOfPeopleBeingEdited, addPerson, removePerson, editPerson}
+        return { peopleAttending, getEditNameOfPeopleBeingEdited, addPerson, removePerson, editPerson, updateName}
     },
     data () {
         return {
@@ -222,14 +222,12 @@ export default {
         },
         // cancel updating a person's name
         cancel (person) {
-            person.edit = false
-            person.editName = person.name
+            this.updateName(person, person.name)
         },
         // Save the name that was edited
         save (person) {
            if (!(this.isDupPerson.has(person.editName))) {
-                person.name = person.editName
-                person.edit = false
+                this.updateName(person, person.editName)
             }
         },
         // Go to the next page of the website
