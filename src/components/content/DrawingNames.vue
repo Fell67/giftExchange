@@ -9,13 +9,13 @@
         </v-row>
         <v-row style="padding: 1%;">
             <v-progress-linear
-                :model-value="((peopleAttending.length - namesToDraw.length) / peopleAttending.length) * 100"
+                :model-value="percentCompleted"
                 height="11"
                 color="accent-2"
             />
             <v-row>
                 <v-col style="text-align: center">
-                    {{ peopleAttending.length - namesToDraw.length }} out of {{ peopleAttending.length }} names drawn
+                    {{ namesDrawnOutOfTotalMsg }}
                 </v-col>
             </v-row>
         </v-row>
@@ -46,8 +46,17 @@ export default {
     },
     data () {
         return {
-            namesToDraw: JSON.parse(JSON.stringify(this.peopleAttending))
+            namesToDraw: JSON.parse(JSON.stringify(this.peopleAttending)),
+            lastPersonToDraw: undefined
         }
+    },
+    computed: {
+      percentCompleted: function () {
+        return ((this.peopleAttending.length - this.namesToDraw.length) / this.peopleAttending.length) * 100
+      },
+      namesDrawnOutOfTotalMsg: function () {
+        return (this.peopleAttending.length - this.namesToDraw.length) + " out of " + this.peopleAttending.length + " names drawn"
+      }
     },
     mounted () {
         // draw names from the hat
@@ -62,7 +71,7 @@ export default {
             for (let person of this.peopleAttending) {
                 // Keep track of if an acceptable name is drawn
                 let isNameDrawn = false
-                while (!isNameDrawn) {
+                while (!isNameDrawn && this.namesToDraw.length !== 1) {
                     // select a random name from the list of people attending
                     let indexOfNameDrawn = Math.floor(Math.random() * this.namesToDraw.length)
 
@@ -71,12 +80,22 @@ export default {
                         // Save the name that was drawn for this person
                         this.updateNameDrawn(person, this.namesToDraw[indexOfNameDrawn].name)
                         
-                        // Mark an acceptable name as being drawn
+                        // Mark an acceptable name has being drawn and save who the last person was
                         isNameDrawn = true
+                        this.lastPersonToDraw = person
 
                         // Remove it from the list of names needing to be drawn
                         this.namesToDraw.splice(indexOfNameDrawn, 1)
                     }
+                }
+                if (!isNameDrawn && this.namesToDraw.length === 1) {
+                  if (person.name === this.namesToDraw[0].name) {
+                    let personToSwitch = this.lastPersonToDraw.nameDrawn
+                    this.updateNameDrawn(this.lastPersonToDraw, person.name)
+                    this.updateNameDrawn(person, personToSwitch)
+                  } else {
+                    this.updateNameDrawn(person, this.namesToDraw[0].name)
+                  }
                 }
             }
         },
