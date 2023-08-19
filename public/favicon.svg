@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="406.0" height="406.0" viewBox="177.0 92.0 406.0 406.0" preserveAspectRatio="none">
+  <g>
+    <defs>
+      <ellipse cx="380.0" cy="295.0" rx="203.00000000000003" ry="203.0" id="s-Ellipse_3-a421d-path"></ellipse>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse_3-a421d-path" fill="#5BC8E7" fill-opacity="1.0"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <rect x="279.0000000000002" y="218.74999999999991" width="201.9999999999997" height="200.0" rx="5.0" ry="5.0" id="s-Rectangle_1-a421d-path"></rect>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Rectangle_1-a421d-path" fill="#FFB703" fill-opacity="1.0"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <rect x="280.9999999999998" y="301.2500000000001" width="200.0" height="39.0" id="s-Rectangle_2-a421d-path"></rect>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Rectangle_2-a421d-path" fill="#023047" fill-opacity="1.0"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <rect x="364.9999999999999" y="219.2499999999997" width="39.0" height="200.00000000000017" id="s-Rectangle_3-a421d-path"></rect>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Rectangle_3-a421d-path" fill="#023047" fill-opacity="1.0"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <ellipse cx="342.4999999999998" cy="200.75000000000026" rx="33.0" ry="19.5" id="s-Ellipse_1-a421d-path"></ellipse>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse_1-a421d-path" fill="none" stroke-width="20.0" stroke="#023047"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <ellipse cx="426.5" cy="200.25000000000014" rx="33.0" ry="19.5" id="s-Ellipse_2-a421d-path"></ellipse>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse_2-a421d-path" fill="none" stroke-width="20.0" stroke="#023047"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <path id="s-Path_1-a421d" d="M384.4999999999998 205.75000000000014 L443.1666666666664 269.0833333333335 "></path>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Path_1-a421d" fill="none" stroke-width="20.0" stroke="#023047" stroke-linecap="butt"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <path id="s-Path_2-a421d" d="M384.4999999999998 205.75000000000014 L325.1666666666664 266.41666666666686 "></path>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Path_2-a421d" fill="none" stroke-width="20.0" stroke="#023047" stroke-linecap="butt"></use>
+    </g>
+  </g>
+</svg>
