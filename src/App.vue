@@ -7,12 +7,6 @@
     color="background"
   >
     <v-card
-      color="accent"
-      class="text-center"
-    >
-      Program still in development
-    </v-card>
-    <v-card
       color="secondary"
     >
       <v-card-title
