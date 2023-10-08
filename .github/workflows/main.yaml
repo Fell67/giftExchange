@@ -9,8 +9,7 @@ on:
 # This modifies the default permissions granted to GITHUB_TOKEN. 
 # This will vary depending on the needs of your workflow. 
 permissions:
-  contents: read
-  pull-requests: read
+  contents: write
 
 # Here are the jobs that run for hte workflow
 jobs:
@@ -34,6 +33,6 @@ jobs:
       # If on the main branch deploy the code
       - name: Deploy
        # if: github.ref == 'refs/heads/main'
-        with: # Set the secret as an input
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+        # with: # Set the secret as an input
+        #   ssh-key: ${{ secrets.DEPLOY_KEY }}
         run: npm run deploy
