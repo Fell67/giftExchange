@@ -36,5 +36,6 @@ jobs:
         run: |
          git config --global user.email "${{ secrets.EMAIL }}"
          git config --global user.name "${{ secrets.USERNAME }}"
+         git remote set-url origin https://github.com/Fell67/giftExchange
          git config --list
          npm run deploy
