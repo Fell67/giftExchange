@@ -31,7 +31,7 @@ jobs:
       # Build the repo
       - name: Build
         run: npm run build
-      # if on main deploy
+      # If on the main branch deploy the code
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: npm run deploy
