@@ -25,10 +25,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup node
-          uses: actions/setup-node@v3
-          with:
-            node-version: 16.13.x
-            cache: npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
       - name: Install
           run: npm install
       - name: Show files changed
