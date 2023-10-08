@@ -14,7 +14,7 @@ permissions:
 
 # Here are the jobs that run for hte workflow
 jobs:
-  CI/CD pipeline:
+  CI-CD pipeline:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
