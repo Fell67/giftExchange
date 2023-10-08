@@ -33,5 +33,7 @@ jobs:
         run: npm run build
       # If on the main branch deploy the code
       - name: Deploy
-        if: github.ref == 'refs/heads/main'
+       # if: github.ref == 'refs/heads/main'
+        with: # Set the secret as an input
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
         run: npm run deploy
