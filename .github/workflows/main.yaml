@@ -34,7 +34,7 @@ jobs:
       - name: Deploy
        # if: github.ref == 'refs/heads/main'
         run: |
-         echo ls
+         ls
          git config --global user.email "${{ secrets.EMAIL }}"
          git config --global user.name "${{ secrets.USERNAME }}"
          npm run deploy
