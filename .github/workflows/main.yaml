@@ -30,17 +30,17 @@ jobs:
           node-version: 16.13.x
           cache: npm
       - name: Install
-          run: npm install
+        run: npm install
       - name: Show files changed
-          run: cat $HOME/files.json
+        run: cat $HOME/files.json
   # Build the repo
   Build:
     steps:
       - name: Build
-          run: npm run build
+        run: npm run build
   # If on the main branch deploy to our website
   Deploy:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy
-          run: npm run deploy
+        run: npm run deploy
