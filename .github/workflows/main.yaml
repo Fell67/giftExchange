@@ -32,7 +32,11 @@ jobs:
       # If on the main branch deploy the code
       - name: Deploy
        # if: github.ref == 'refs/heads/main'
-        run: |
-         git config --global user.email "${{ secrets.EMAIL }}"
-         git config --global user.name "${{ secrets.USERNAME }}"
-         npm run deploy
+       uses: JamesIves/github-pages-deploy-action@v4
+       with:
+          branch: giftExchangeWebsite
+          folder: dist
+        # run: |
+        #  git config --global user.email "${{ secrets.EMAIL }}"
+        #  git config --global user.name "${{ secrets.USERNAME }}"
+        #  npm run deploy
