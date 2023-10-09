@@ -38,4 +38,3 @@ jobs:
          git --work-tree dist add --all
          git --work-tree dist commit -m 'Deploy'
          git push origin HEAD:giftExchangeWebsite --force
-
