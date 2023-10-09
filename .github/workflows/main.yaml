@@ -31,10 +31,16 @@ jobs:
         run: npm run build
       # If on the main branch deploy the code
       - name: Deploy
-       # if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
          git config --global user.email "${{ secrets.EMAIL }}"
          git config --global user.name "${{ secrets.USERNAME }}"
          git --work-tree dist add --all
          git --work-tree dist commit -m 'Deploy'
          git push origin HEAD:giftExchangeWebsite --force
+      - name: Tag
+        # if: github.ref == 'refs/heads/main'
+        run: |
+          version=(less package.json | grep version | awk -F: '{ print $2 }' | sed 's/[",]//g')
+          echo $version
+
