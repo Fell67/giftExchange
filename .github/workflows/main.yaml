@@ -10,6 +10,7 @@ on:
 # This will vary depending on the needs of your workflow. 
 permissions:
   contents: write
+  id-token: write 
 
 # Here are the jobs that run for hte workflow
 jobs:
