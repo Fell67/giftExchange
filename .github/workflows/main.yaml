@@ -29,6 +29,9 @@ jobs:
       # Build the repo
       - name: Build
         run: npm run build
+      # Unit Test
+      - name: Unit Test
+        run: npm run unit-test
       # If on the main branch deploy the code
       - name: Deploy
         if: github.ref == 'refs/heads/main'
