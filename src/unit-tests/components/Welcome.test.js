@@ -6,7 +6,7 @@ import { marked } from "marked"
 import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
-const readMe = new URL('README.md', 'https://fell67.github.io/giftExchange/')
+const readMe = new URL("README.md", "https://fell67.github.io/giftExchange/")
 const wrapper = mount(Welcome, {})
 
 // Create the html that would be made from the readMe file to compare with the function
@@ -31,22 +31,22 @@ async function createTestReadMeHTML () {
 
 describe("Testing the Welcome component", () => {
     // Test that the readme can load correctly
-    it('Test that the readme can load correctly', async () => {
+    it("Test that the readme can load correctly", async () => {
         let readMeFromTest = await createTestReadMeHTML()
         let readMeFromMethod = await wrapper.vm.markdownToHtml(readMe)
         expect(readMeFromMethod).to.equal(readMeFromTest)
     }),
     // Test that the markdownToHtml throws an error when given a bad url
-    it('Test that the markdownToHtml throws an error when given a bad url', async () => {
-        let readMeFromMethod = await wrapper.vm.markdownToHtml(new URL('badurl.md', 'https://fell67.github.io/giftExchange/'))
-        expect(readMeFromMethod).toContain('Error')
+    it("Test that the markdownToHtml throws an error when given a bad url", async () => {
+        let readMeFromMethod = await wrapper.vm.markdownToHtml(new URL("badurl.md", "https://fell67.github.io/giftExchange/"))
+        expect(readMeFromMethod).toContain("Error")
     }),
     // Testing that when the continue button is clicked the component emits a goToDifferentPage event with "continue"
-    it('Testing that when the continue button is clicked the component emits a goToDifferentPage event with "continue"', () => {
-        wrapper.find('#continue-button').trigger('click')
+    it("Testing that when the continue button is clicked the component emits a goToDifferentPage event with 'continue'", () => {
+        wrapper.find("#continue-button").trigger("click")
         wrapper.vm.$nextTick(() => {
             wrapper.vm.goToDifferentPage()
-            expect(wrapper.emitted().goToDifferentPage[0]).toEqual(['continue'])
+            expect(wrapper.emitted().goToDifferentPage[0]).toEqual(["continue"])
         })
     })
 })
