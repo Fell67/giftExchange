@@ -23,7 +23,7 @@ import { marked } from "marked"
 import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
-const readMe = new URL('readme.md', 'http://localhost:5173/giftExchange/')
+const readMe = new URL('README.md', 'https://fell67.github.io/giftExchange/')
 
 export default {
     data () {

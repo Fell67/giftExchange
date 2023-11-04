@@ -6,7 +6,7 @@ import { marked } from "marked"
 import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
-const readMe = new URL('readme.md', 'http://localhost:5173/giftExchange/')
+const readMe = new URL('README.md', 'https://fell67.github.io/giftExchange/')
 const wrapper = mount(Welcome, {})
 
 // Create the html that would be made from the readMe file to compare with the function
@@ -38,7 +38,7 @@ describe("Testing the Welcome component", () => {
     }),
     // Test that the markdownToHtml throws an error when given a bad url
     it('Test that the markdownToHtml throws an error when given a bad url', async () => {
-        let readMeFromMethod = await wrapper.vm.markdownToHtml(new URL('badurl.md', 'http://localhost:5173/giftExchange/'))
+        let readMeFromMethod = await wrapper.vm.markdownToHtml(new URL('badurl.md', 'https://fell67.github.io/giftExchange/'))
         expect(readMeFromMethod).toContain('Error')
     }),
     // Testing that when the continue button is clicked the component emits a goToDifferentPage event with "continue"
