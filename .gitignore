@@ -28,7 +28,3 @@ coverage
 
 test-results/
 playwright-report/
-
-# lock files
-*.lock
-package-lock.json
