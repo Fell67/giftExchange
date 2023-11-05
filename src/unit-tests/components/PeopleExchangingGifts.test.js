@@ -4,6 +4,7 @@ import { createTestingPinia } from "@pinia/testing"
 
 import PeopleExchangingGifts from "@/components/content/PeopleExchangingGifts.vue"
 
+// create a new wrapper and return it
 function createWrapper () {
     return mount(PeopleExchangingGifts, {
         plugins: [

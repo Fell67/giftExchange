@@ -7,10 +7,11 @@ import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
 const readMe = new URL("README.md", "https://fell67.github.io/giftExchange/")
+
+// create a new wrapper and return it
 function createWrapper () {
     return mount(Welcome, {})
 }
-const wrapper = mount(Welcome, {})
 
 // Create the html that would be made from the readMe file to compare with the function
 async function createTestReadMeHTML () {
