@@ -24,6 +24,7 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
                 this.peopleAttending.push(new Person(person))
             } else {
                 console.error("Error in PeopleAttending store: Cannot add person. addPerson only adds variables of type String.")
+                return "Error in PeopleAttending store: Cannot add person. addPerson only adds variables of type String."
             }
         },
         // Remove a person from the list of people attending
@@ -33,6 +34,7 @@ export const usePeopleAttendingStore = defineStore('peopleAttending', {
                 this.peopleAttending.splice(indexOfName, 1)
             } else {
                 console.error("Error in PeopleAttending store: Cannot remove person. removePerson was not able to find the person that needed to be removed.")
+                return "Error in PeopleAttending store: Cannot remove person. removePerson was not able to find the person that needed to be removed."
             }
             
         },
