@@ -9,12 +9,14 @@
         <v-card-actions>
             <v-spacer />
             <v-btn
+                id="go-back-button" 
                 color="accent-2"
                 @click="goToDifferentPage('goBack')"
             >
                 Go Back
             </v-btn>
-            <v-btn 
+            <v-btn
+                id="continue-button" 
                 variant="elevated"
                 color="accent"
                 @click="goToDifferentPage('continue')"
@@ -47,6 +49,7 @@ export default {
                 this.$emit("goToDifferentPage", direction)
             } else {
                 console.error("Error in PeopleExchangingGifts: " + direction + " is invalid")
+                return "Error in PeopleExchangingGifts: " + direction + " is invalid"
             }
         }
     }
