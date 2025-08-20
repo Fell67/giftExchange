@@ -2,11 +2,11 @@ import { mount } from "@vue/test-utils"
 import { describe, expect, it, vi } from "vitest"
 import { createTestingPinia } from "@pinia/testing"
 
-import PeopleExchangingGifts from "@/components/content/PeopleExchangingGifts.vue"
+import AddPeople from "@/components/content/AddPeople.vue"
 
 // create a new wrapper and return it
 function createWrapper () {
-    return mount(PeopleExchangingGifts, {
+    return mount(AddPeople, {
         plugins: [
             createTestingPinia({
                 createSpy: vi.fn,
@@ -16,7 +16,7 @@ function createWrapper () {
     })
 }
 
-describe("Testing the PeopleExchangingGifts component", () => {
+describe("Testing the AddPeople component", () => {
     // Testing that when the continue button is clicked the component emits a goToDifferentPage event with "continue"
     it("Testing that when the continue button is clicked the component emits a goToDifferentPage event with 'continue'", () => {
         let wrapper = createWrapper()
