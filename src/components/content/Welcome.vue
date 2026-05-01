@@ -6,7 +6,8 @@
         <div v-html="readMeHTML" />
         <v-card-actions>
             <v-spacer />
-            <v-btn 
+            <v-btn
+                id="continue-button"
                 variant="elevated"
                 color="accent"
                 @click="goToDifferentPage()"
@@ -22,7 +23,7 @@ import { marked } from "marked"
 import { mangle } from "marked-mangle"
 import { gfmHeadingId } from "marked-gfm-heading-id"
 
-const readMe = "@/../README.md"
+const readMe = new URL("README.md", "https://fell67.github.io/giftExchange/")
 
 export default {
     data () {
@@ -30,12 +31,12 @@ export default {
             readMeHTML: ""
         }
     },
-    created () {
-        this.markdownToHtml()
+    async created () {
+        this.readMeHTML = await this.markdownToHtml(readMe)
     },
     methods: {
         // Add the readme to the template
-        async markdownToHtml () {
+        async markdownToHtml (readMe) {
             const options = {
                 prefix: "readMe-",
             };
@@ -51,7 +52,7 @@ export default {
                 }
             })
 
-            this.readMeHTML = marked(text)
+            return marked(text)
         },
         // Go to the next page of the website
         goToDifferentPage () {

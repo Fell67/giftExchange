@@ -3,7 +3,6 @@ on:
   # Allows me to trigger it from the UI
   workflow_dispatch:
   # Triggers the workflow on a push or pull request
-  push:
   pull_request:
 
 # This modifies the default permissions granted to GITHUB_TOKEN. 
@@ -22,13 +21,16 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.13.x
+          node-version: 18.16.x
           cache: npm
       - name: Install
         run: npm ci
       # Build the repo
       - name: Build
         run: npm run build
+      # Unit Test
+      - name: Unit Test
+        run: npm run unit-test
       # If on the main branch deploy the code
       - name: Deploy
         if: github.ref == 'refs/heads/main'
