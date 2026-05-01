@@ -30,7 +30,7 @@ describe("Testing the PeopleExchangingGifts component", () => {
         expect(wrapper.emitted("goToDifferentPage")[0]).toEqual(["goBack"])
     }),
     // Testing that when goToDifferentPage gets an invalid direction that it returns an error
-    it("Testing that when goToDifferentPage gets an invalid direction that it returns an error", () => {
+    it("Testing that when the go back button is clicked the component emits a goToDifferentPage event with 'goBack'", () => {
         let wrapper = createWrapper()
         let response = wrapper.vm.goToDifferentPage("badDirection")
         expect(response).toContain("Error")
