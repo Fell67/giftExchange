@@ -22,6 +22,7 @@
         <v-card-actions>
             <v-spacer />
             <v-btn
+                id="go-back-button"
                 color="accent-2"
                 @click="goToDifferentPage('goBack')"
             >
@@ -107,6 +108,7 @@ export default {
                 this.$emit("goToDifferentPage", direction)
             } else {
                 console.error("Error in DrawingNames: " + direction + " is invalid")
+                return "Error in DrawingNames: " + direction + " is invalid"
             }
         }
     }
